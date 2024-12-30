@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 
+import TopNavBar from "./components/TopNavBar";
+import LeftSideBar from "./components/LeftSideBar";
+import { ThemeProvider } from "next-themes";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -27,7 +31,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={true}>
+          <main className="flex bg-betterFinance-background dark:bg-betterFinance-tertiary min-h-screen">
+            <LeftSideBar />
+            <div className="rounded-l-[40px] p-8 bg-white dark:bg-black w-5/6">
+              <TopNavBar />
+              <section>
+                {children}
+              </section>
+            </div>
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );
