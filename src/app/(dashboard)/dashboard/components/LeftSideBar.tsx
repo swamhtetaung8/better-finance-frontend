@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import { LayoutDashboard, Goal, Wallet, UserRound, Cog } from 'lucide-react'
+import { LayoutDashboard, Goal, Wallet, UserRound, Cog, Banknote } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
@@ -12,6 +12,11 @@ const links = [
     name: 'Dashboard',
     uri: '/dashboard',
     icon: <LayoutDashboard />
+  },
+  {
+    name: 'Transactions',
+    uri: '/dashboard/transactions',
+    icon: <Banknote />
   },
   {
     name: 'Goals',

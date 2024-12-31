@@ -13,7 +13,7 @@ export default {
 				betterFinance: {
 					primary: '#0A3981',
 					secondary: '#E38E49',
-					tertiary: '#1F509A',
+					tertiary: '#3c76cc',
 					background: '#D4EBF8'
 				},
   			background: 'hsl(var(--background))',
