@@ -7,7 +7,6 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
@@ -19,7 +18,7 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 
-const SignInSchema = z.object({
+const SignUpSchema = z.object({
   fullName: z.string(),
   email: z.string().email(),
   password: z.string().min(8),
@@ -31,11 +30,11 @@ const SignInSchema = z.object({
     }),
 });
 
-type SignInFormFields = z.infer<typeof SignInSchema>;
+type SignInFormFields = z.infer<typeof SignUpSchema>;
 
-const SignInPage = () => {
+const SignUpPage = () => {
   const form = useForm<SignInFormFields>({
-    resolver: zodResolver(SignInSchema),
+    resolver: zodResolver(SignUpSchema),
   });
 
   const onSubmit: SubmitHandler<SignInFormFields> = (data) => {
@@ -133,4 +132,4 @@ const SignInPage = () => {
   );
 };
 
-export default SignInPage;
+export default SignUpPage;
