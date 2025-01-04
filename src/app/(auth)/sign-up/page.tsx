@@ -21,7 +21,9 @@ import { Button } from "@/components/ui/button";
 const SignUpSchema = z.object({
   fullName: z.string(),
   email: z.string().email(),
-  password: z.string().min(8),
+  password: z.string().min(8, {
+    message: "Password must be at least 8 characters",
+  }),
   agree: z
     .boolean()
     .optional()
