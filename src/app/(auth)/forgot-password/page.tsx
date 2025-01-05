@@ -7,7 +7,6 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
