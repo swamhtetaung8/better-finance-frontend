@@ -17,6 +17,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
+import { useSignIn } from "@/hooks/api/useSignIn";
+import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
 const SignInSchema = z.object({
   email: z.string().email(),
@@ -24,15 +27,32 @@ const SignInSchema = z.object({
   remember: z.boolean().optional(),
 });
 
-type SignInFormFields = z.infer<typeof SignInSchema>;
+export type SignInFormFields = z.infer<typeof SignInSchema>;
 
 const SignInPage = () => {
+  const signInMutation = useSignIn();
+  const { toast } = useToast();
+  const router = useRouter();
+
   const form = useForm<SignInFormFields>({
     resolver: zodResolver(SignInSchema),
   });
 
   const onSubmit: SubmitHandler<SignInFormFields> = (data) => {
     console.log(data);
+    signInMutation.mutate(data, {
+      onSuccess: () => {
+        router.push("/dashboard");
+      },
+      onError: () => {
+        toast({
+          variant: "destructive",
+          title: "Invalid credentials",
+          description:
+            "There was an error in the credentials, please check again.",
+        });
+      },
+    });
   };
 
   return (
