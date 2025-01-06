@@ -5,6 +5,7 @@ import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Cookies from "js-cookie";
 
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -39,9 +40,9 @@ const SignInPage = () => {
   });
 
   const onSubmit: SubmitHandler<SignInFormFields> = (data) => {
-    console.log(data);
     signInMutation.mutate(data, {
-      onSuccess: () => {
+      onSuccess: (response) => {
+        Cookies.set("api_token", response.token);
         router.push("/dashboard");
       },
       onError: () => {
