@@ -22,6 +22,7 @@ import Link from "next/link";
 const TopNavBar = () => {
   const pathname = usePathname();
   const router = useRouter();
+  const userName = Cookies.get("user_name");
 
   const getRouteName = (path: string) => {
     const parts = path.split("/").filter(Boolean);
@@ -40,25 +41,25 @@ const TopNavBar = () => {
   const currentPage = getRouteName(pathname);
 
   return (
-    <nav className="grid grid-cols-4 items-center gap-x-4 mb-8">
-      <h1 className="capitalize scroll-m-20 text-2xl xl:text-3xl font-semibold tracking-tight text-betterFinance-primary dark:text-betterFinance-background">
+    <nav className="grid grid-cols-4 items-start gap-x-4 mb-8">
+      <h1 className="capitalize text-2xl xl:text-3xl font-bold tracking-tight text-betterFinance-primary dark:text-betterFinance-background">
         {currentPage}
       </h1>
       <div></div>
-      <div className="flex w-full max-w-sm items-center space-x-2">
+      <div className="flex w-full max-w-sm items-start space-x-2">
         <Input type="text" placeholder="Search" />
         <Button type="submit">Search</Button>
       </div>
-      <div className="flex items-center justify-between">
+      <div className="flex items-start justify-between">
         <div className="flex gap-4 items-center">
           <ThemeSwitch />
           <button className="p-2 transition-colors text-betterFinance-tertiary duration-200 bg-betterFinance-background hover:bg-betterFinance-tertiary/50 rounded-full">
             <Bell />
           </button>
         </div>
-        <div className="flex gap-4 items-center">
-          <h1 className="capitalize scroll-m-20 text-xl xl:text-2xl font-semibold tracking-tight text-betterFinance-primary dark:text-betterFinance-background">
-            Swam Htet
+        <div className="flex gap-4 items-start">
+          <h1 className="capitalize scroll-m-20 text-xl xl:text-2xl font-bold tracking-tight text-betterFinance-primary dark:text-betterFinance-background">
+            {userName}
           </h1>
           <DropdownMenu>
             <DropdownMenuTrigger>

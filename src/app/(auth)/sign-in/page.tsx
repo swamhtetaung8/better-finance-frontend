@@ -43,6 +43,7 @@ const SignInPage = () => {
     signInMutation.mutate(data, {
       onSuccess: (response) => {
         Cookies.set("api_token", response.token);
+        Cookies.set("user_name", response.user.name);
         router.push("/dashboard");
       },
       onError: () => {
