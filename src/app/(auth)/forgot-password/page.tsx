@@ -39,7 +39,7 @@ const ForgotPasswordPage = () => {
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <h2 className="text-betterFinance-primary text-xl font-semibold">
-          Sign In
+          Reset Password
         </h2>
 
         <FormField
