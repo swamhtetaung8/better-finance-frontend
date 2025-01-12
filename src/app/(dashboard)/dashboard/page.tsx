@@ -4,7 +4,7 @@ import RecentTransactions from "@/app/(dashboard)/dashboard/components/RecentTra
 
 const DashboardPage = () => {
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 h-full">
 
       {/* Cards stating amount of money */}
       <div className="space-y-4">
@@ -47,7 +47,7 @@ const DashboardPage = () => {
       </div>
 
       {/* Recent Transactions Card */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-4 h-[calc(100%-250px)]">
         <RecentTransactions />
       </div>
 

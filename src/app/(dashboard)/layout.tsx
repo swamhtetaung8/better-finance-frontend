@@ -33,7 +33,7 @@ export default function RootLayout({
             <LeftSideBar />
             <div className="rounded-l-[40px] p-8 bg-white dark:bg-gray-900 w-5/6">
               <TopNavBar />
-              <section>{children}</section>
+              <section className="h-[calc(100vh-140px)]">{children}</section>
             </div>
           </main>
         </ThemeProvider>
