@@ -10,11 +10,12 @@ interface DashboardMoneyCardProps {
   total: number,
   lastWeekComparison: number,
   isLastWeekComparisonPositive: boolean,
+  className?: string,
 }
 
-const DashboardMoneyCard = ({ type, percentage, isPercentagePositive, total, lastWeekComparison, isLastWeekComparisonPositive } : DashboardMoneyCardProps) => {
+const DashboardMoneyCard = ({ type, percentage, isPercentagePositive, total, lastWeekComparison, isLastWeekComparisonPositive, className } : DashboardMoneyCardProps) => {
   return (
-    <div className='border rounded-3xl p-4 space-y-2 dark:border-betterFinance-primary'>
+    <div className={`border rounded-3xl p-4 space-y-2 dark:border-betterFinance-primary ${className}`}>
 
       {/* Top Label and Percentage display */}
       <div className="flex justify-between items-center">

@@ -5,7 +5,6 @@ import { TrendingUp } from "lucide-react"
 import { Label, Pie, PieChart } from "recharts"
 
 import {
-  Card,
   CardContent,
   CardDescription,
   CardFooter,
@@ -38,15 +37,18 @@ const chartConfig = {
   shopping: {
     label: "Shopping",
   },
+  utilities: {
+    label: "Utilities",
+  },
 } satisfies ChartConfig
 
-export function BalancePieChart() {
+export default function BalancePieChart() {
   const totalExpenses = React.useMemo(() => {
     return chartData.reduce((acc, curr) => acc + curr.amount, 0)
   }, [])
 
   return (
-    <div className="border rounded-3xl space-y-2 dark:border-betterFinance-primary">
+    <div className="border rounded-3xl space-y-2 flex-1 dark:border-betterFinance-primary">
       <CardHeader className="items-center pb-0">
         <CardTitle>Expense Breakdown</CardTitle>
         <CardDescription>January 2025</CardDescription>
@@ -81,16 +83,9 @@ export function BalancePieChart() {
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-foreground text-3xl font-bold"
-                        >
+                          className=" fill-betterFinance-primary dark:fill-betterFinance-background text-3xl font-bold"
+                        > 
                           {totalExpenses.toLocaleString()}
-                        </tspan>
-                        <tspan
-                          x={viewBox.cx}
-                          y={(viewBox.cy || 0) + 24}
-                          className="fill-muted-foreground"
-                        >
-                          
                         </tspan>
                       </text>
                     )
@@ -106,7 +101,7 @@ export function BalancePieChart() {
           Increase by 5.2% this month <TrendingUp className="h-4 w-4" />
         </div>
         <div className="leading-none text-muted-foreground">
-          Showing expense breakdown for the current month
+          Showing expense breakdowns by types
         </div>
       </CardFooter>
     </div>

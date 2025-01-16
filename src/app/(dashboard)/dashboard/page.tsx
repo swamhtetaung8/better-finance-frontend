@@ -1,7 +1,8 @@
 import React from "react";
 import DashboardMoneyCard from "@/app/(dashboard)/dashboard/components/DashboardMoneyCard";
 import RecentTransactions from "@/app/(dashboard)/dashboard/components/RecentTransactions";
-import { BalancePieChart } from "./components/BalancePieChart";
+import FinanceScore from "@/app/(dashboard)/dashboard//components/FinanceScore";
+import BalancePieChart from "@/app/(dashboard)/dashboard/components/BalancePieChart";
 
 const DashboardPage = () => {
   return (
@@ -56,9 +57,16 @@ const DashboardPage = () => {
       </div>
 
       <div className="h-full w-1/2">
-        <div className="space-y-4 h-full w-1/2">
-          {/* Cards stating amount of money */}
+        <div className="h-1/2 flex gap-4">
           <BalancePieChart />
+          <div className="space-y-4 flex-1 flex flex-col">
+            <FinanceScore />
+            <div
+              className={
+                "flex-1 border rounded-3xl p-4 space-y-2 dark:border-betterFinance-primary"
+              }
+            ></div>
+          </div>
         </div>
       </div>
     </div>
