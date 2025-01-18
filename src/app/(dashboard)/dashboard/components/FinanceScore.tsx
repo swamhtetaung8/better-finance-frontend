@@ -27,7 +27,7 @@ const FinanceScore = () => {
             </h1>
             <h1 className="text-betterFinance-primary text-3xl">92%</h1>
           </div>
-          <Progress value={92} />
+          <Progress className="h-8" value={92} />
         </div>
       </div>
     </div>

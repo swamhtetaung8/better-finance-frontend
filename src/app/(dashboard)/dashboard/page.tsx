@@ -4,6 +4,7 @@ import RecentTransactions from "@/app/(dashboard)/dashboard/components/RecentTra
 import FinanceScore from "@/app/(dashboard)/dashboard/components/FinanceScore";
 import BalancePieChart from "@/app/(dashboard)/dashboard/components/BalancePieChart";
 import TotalBalance from "@/app/(dashboard)/dashboard/components/TotalBalance";
+import SavingPlans from "./components/SavingPlans";
 
 const DashboardPage = () => {
   return (
@@ -62,9 +63,14 @@ const DashboardPage = () => {
       <div className="h-full w-1/2">
         <div className="flex gap-4 items-start h-full">
           <BalancePieChart />
-          <div className="space-y-4 flex-1 flex flex-col">
-            <FinanceScore />
-            <TotalBalance />
+          <div className="space-y-4 flex-1 flex flex-col h-full">
+            <div className="flex flex-col space-y-4 h-1/2">
+              <FinanceScore />
+              <TotalBalance />
+            </div>
+            <div className="h-1/2">
+              <SavingPlans />
+            </div>
           </div>
         </div>
       </div>

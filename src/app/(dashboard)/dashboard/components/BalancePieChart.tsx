@@ -131,10 +131,10 @@ export default function BalancePieChart() {
                   style={{ backgroundColor: chartData.fill }}
                 ></div>
                 <div className="space-y-1">
-                  <p className="text-betterFinance-primary font-semibold">
+                  <p className="text-betterFinance-primary dark:text-betterFinance-background font-semibold">
                     {chartConfig[chartData.expenseType].label}
                   </p>
-                  <p className="text-neutral-600">${chartData.amount}</p>
+                  <p className="text-neutral-600 dark:text-neutral-300">${chartData.amount}</p>
                 </div>
               </div>
 
