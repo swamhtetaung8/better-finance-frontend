@@ -60,7 +60,7 @@ const DashboardPage = () => {
 
       {/* Right Half of the Dashboard */}
       <div className="h-full w-1/2">
-        <div className="h-1/2 flex gap-4">
+        <div className="flex gap-4 items-start h-full">
           <BalancePieChart />
           <div className="space-y-4 flex-1 flex flex-col">
             <FinanceScore />

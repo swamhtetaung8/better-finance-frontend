@@ -8,7 +8,7 @@ export enum ExpenseType {
   Transportation = "transportation",
   Utility = "utility",
   Shopping = "shopping",
-  Saving = "saving",
+  Medical = "medical",
 }
 
 interface ExpenseTransactionTypeBadgeProps {
@@ -29,7 +29,7 @@ const ExpenseTransactionTypeBadge = ({
       return <Badge className="bg-rose-500 hover:bg-rose-600 rounded-full">{formattedExpenseType}</Badge>
     case ExpenseType.Utility:
       return <Badge className="bg-yellow-500 hover:bg-yellow-600 rounded-full">{formattedExpenseType}</Badge>
-    case ExpenseType.Saving:
+    case ExpenseType.Medical:
       return <Badge className="bg-amber-500 hover:bg-amber-600 rounded-full">{formattedExpenseType}</Badge>
   };
 };
