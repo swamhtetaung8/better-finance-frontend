@@ -111,7 +111,7 @@ const RecentTransactions = () => {
         </Select>
       </div>
 
-      <ScrollArea className="h-[508px]" disableScrollbar>
+      <ScrollArea className="h-[508px] 2xl:h-[440px]" disableScrollbar>
         <Table>
           <TableHeader>
             <TableRow className="sticky top-0 bg-white hover:bg-white dark:bg-gray-900 dark:hover:bg-gray-900">

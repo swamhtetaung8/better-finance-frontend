@@ -48,7 +48,7 @@ const SavingPlans = () => {
             $8,800
           </h1>
         </div>
-        <div className="space-y-2 divide-y-[1px]">
+        <div className="space-y-2 divide-y-[1px] 2xl:max-h-[240px] 2xl:overflow-y-auto">
           {savingPlans.map((savingPlan) => (
             <div className="space-y-2 py-2" key={savingPlan.id}>
               <h2 className="text-betterFinance-primary font-medium dark:text-betterFinance-background">

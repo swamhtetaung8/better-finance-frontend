@@ -65,13 +65,13 @@ const TopNavBar = () => {
             <DropdownMenuTrigger>
               <button>
                 <Avatar>
-                  <AvatarImage src="https://avatar.iran.liara.run/public" />
+                  <AvatarImage src="images/user-placeholder-icon.png" />
                   <AvatarFallback>Photo of user</AvatarFallback>
                 </Avatar>
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
-              <DropdownMenuLabel className="text-betterFinance-primary">
+              <DropdownMenuLabel className="text-betterFinance-primary dark:text-betterFinance-background">
                 Manage Account
               </DropdownMenuLabel>
               <DropdownMenuSeparator />

@@ -8,6 +8,9 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+		screens: {
+      '2xl': '1920px',
+    },
   	extend: {
   		colors: {
 				betterFinance: {
