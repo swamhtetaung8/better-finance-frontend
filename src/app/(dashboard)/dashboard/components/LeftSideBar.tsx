@@ -9,6 +9,7 @@ import {
   Cog,
   Banknote,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -51,9 +52,12 @@ const LeftSideBar = () => {
   const pathName = usePathname();
   return (
     <div className="w-1/6 p-8 space-y-8">
-      <h1 className="text-2xl xl:text-3xl font-bold tracking-tight text-betterFinance-primary dark:text-betterFinance-background">
+      {/* <h1 className="text-2xl xl:text-3xl font-bold tracking-tight text-betterFinance-primary dark:text-betterFinance-background">
         Better Finance
-      </h1>
+      </h1> */}
+      <div className='relative h-[100px]'>
+        <Image src="/images/logo.png" className="object-contain" fill alt="Logo of better finance brand" />
+      </div>
       <div className="space-y-4">
         {links.map((link) => (
           <Link
