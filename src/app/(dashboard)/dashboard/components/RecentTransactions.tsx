@@ -91,25 +91,9 @@ const RecentTransactions = () => {
   return (
     <div className="border rounded-3xl p-4 space-y-2 dark:border-betterFinance-primary h-full overflow-hidden">
       {/* Top Header and month select box */}
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-lg text-betterFinance-primary dark:text-betterFinance-background font-bold">
-          Recent Transactions
-        </h1>
-
-        <Select>
-          <SelectTrigger className="w-[150px]">
-            <SelectValue placeholder="Current Month" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Months</SelectLabel>
-              <SelectItem value="current">Current Month</SelectItem>
-              <SelectItem value="december-2024">December 2024</SelectItem>
-              <SelectItem value="november-2024">November 2024</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-      </div>
+      <h1 className="text-lg mb-8 text-betterFinance-primary dark:text-betterFinance-background font-bold">
+        Recent Transactions
+      </h1>
 
       <ScrollArea className="h-[508px] 2xl:h-[440px]" disableScrollbar>
         <Table>
@@ -124,7 +108,7 @@ const RecentTransactions = () => {
           <TableBody>
             <tr>
               <td>
-              <ScrollBar className="pt-[calc(3rem+4px)]" /> 
+                <ScrollBar className="pt-[calc(3rem+4px)]" />
               </td>
             </tr>
             {transactions?.map((transaction) => (
