@@ -8,9 +8,6 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-		screens: {
-      '2xl': '1920px',
-    },
   	extend: {
   		colors: {
 				betterFinance: {
@@ -64,7 +61,10 @@ export default {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+			screens: {
+				'2xl': '1920px',
+			},
   	}
   },
   plugins: [require("tailwindcss-animate")],
