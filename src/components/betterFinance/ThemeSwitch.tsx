@@ -14,7 +14,7 @@ const ThemeSwitch = () => {
   
   if(resolvedTheme === 'dark') {
     return (
-      <button onClick={()=>setTheme('light')} className='p-2 transition-colors text-betterFinance-tertiary duration-200 bg-betterFinance-background hover:bg-betterFinance-tertiary/50 rounded-full'>
+      <button onClick={()=>setTheme('light')} className='p-3 transition-colors text-betterFinance-tertiary duration-200 bg-betterFinance-tertiary/20 hover:bg-betterFinance-tertiary/40 rounded-full'>
           <SunDimIcon/>
       </button>
     )
@@ -22,7 +22,7 @@ const ThemeSwitch = () => {
 
   if(resolvedTheme === 'light') {
     return (
-      <button onClick={()=>setTheme('dark')} className='p-2 transition-colors text-betterFinance-tertiary duration-200 bg-betterFinance-background hover:bg-betterFinance-tertiary/50 rounded-full'>
+      <button onClick={()=>setTheme('dark')} className='p-3 transition-colors text-betterFinance-tertiary duration-200 bg-betterFinance-background/50 hover:bg-betterFinance-tertiary/50 rounded-full'>
           <SunMoonIcon/>
       </button>
     )
