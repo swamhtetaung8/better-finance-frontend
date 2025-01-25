@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-betterFinance-primary text-white shadow hover:bg-betterFinance-primary/90",
+          "bg-betterFinance-primary text-white shadow hover:bg-betterFinance-primary/90 dark:bg-betterFinance-background dark:text-betterFinance-primary dark:hover:bg-betterFinance-background/90",
         outline:
           "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
         secondary:

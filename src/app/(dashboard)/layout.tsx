@@ -5,6 +5,7 @@ import "@/app/globals.css";
 import TopNavBar from "@/app/(dashboard)/dashboard/components/TopNavBar";
 import LeftSideBar from "@/app/(dashboard)/dashboard/components/LeftSideBar";
 import { ThemeProvider } from "next-themes";
+import { Toaster } from "@/components/ui/toaster";
 
 const manRopeSans = Manrope({
   variable: "--font-manrope-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({
               <section className="h-[calc(100vh-140px)]">{children}</section>
             </div>
           </main>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

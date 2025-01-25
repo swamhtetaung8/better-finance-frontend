@@ -64,9 +64,9 @@ const LeftSideBar = () => {
         {links.map((link) => (
           <Link
             className={cn(
-              "flex gap-4 p-3 rounded-3xl hover:bg-betterFinance-tertiary dark:hover:bg-betterFinance-background dark:hover:text-betterFinance-primary hover:text-white transition-colors duration-200", // Common classes
+              "flex gap-4 p-3 rounded-3xl hover:bg-betterFinance-primary dark:hover:bg-betterFinance-background dark:hover:text-betterFinance-primary hover:text-white transition-colors duration-200", // Common classes
                 {
-                "bg-betterFinance-tertiary dark:bg-betterFinance-background dark:text-betterFinance-primary font-semibold text-white":
+                "bg-betterFinance-primary dark:bg-betterFinance-background dark:text-betterFinance-primary font-semibold text-white":
                   link.uri == "/dashboard" ? (pathName === link.uri) : (pathName === link.uri || pathName.startsWith(link.uri))
                 }
               )}

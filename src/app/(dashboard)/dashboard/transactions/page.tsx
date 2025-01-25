@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/select";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import TransactionTypeBadge from "../components/TransactionTypeBadge";
+import Link from "next/link";
 
 const transactions = [
   {
@@ -137,10 +138,12 @@ const TransactionsPage = () => {
               </SelectGroup>
             </SelectContent>
           </Select>
-          <Button className="uppercase">
-            <PlusIcon />
-            <span>Add Transaction</span>
-          </Button>
+          <Link href={`/dashboard/transactions/create`}>
+            <Button className="uppercase">
+              <PlusIcon />
+              <span>Add Transaction</span>
+            </Button>
+          </Link>
         </div>
       </div>
 
