@@ -150,7 +150,7 @@ const TransactionsPage = () => {
           <Table>
             <TableHeader>
               <TableRow className="sticky top-0 bg-white hover:bg-white dark:bg-gray-900 dark:hover:bg-gray-900">
-                <TableHead className="w-[250px]">Transaction Name</TableHead>
+                <TableHead className="w-[550px]">Transaction Name</TableHead>
                 <TableHead>Date</TableHead>
                 <TableHead>Type</TableHead>
                 <TableHead className="text-right">Amount</TableHead>
