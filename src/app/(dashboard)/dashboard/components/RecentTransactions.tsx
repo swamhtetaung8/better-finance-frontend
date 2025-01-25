@@ -13,6 +13,34 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 const transactions = [
   {
+    transactionName: "Snack at Swensens",
+    date: "2025-01-20",
+    isPositive: false,
+    type: "food_and_drinks",
+    totalAmount: 8,
+  },
+  {
+    transactionName: "Uber to work",
+    date: "2025-01-18",
+    isPositive: false,
+    type: "transportation",
+    totalAmount: 12,
+  },
+  {
+    transactionName: "Medical Checkup",
+    date: "2024-01-02",
+    isPositive: false,
+    type: "medical",
+    totalAmount: 55,
+  },
+  {
+    transactionName: "Eat out",
+    date: "2024-01-10",
+    isPositive: false,
+    type: "food_and_drinks",
+    totalAmount: 25,
+  },
+  {
     transactionName: "Dinner at McDonald's",
     date: "2024-12-30",
     isPositive: false,
@@ -85,7 +113,7 @@ const RecentTransactions = () => {
         Recent Transactions
       </h1>
 
-      <ScrollArea className="h-[508px] 2xl:h-[440px]" disableScrollbar>
+      <ScrollArea className="h-[calc(100%-75px)]" disableScrollbar>
         <Table>
           <TableHeader>
             <TableRow className="sticky top-0 bg-white hover:bg-white dark:bg-gray-900 dark:hover:bg-gray-900">

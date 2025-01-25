@@ -117,7 +117,7 @@ const transactions = [
 
 const TransactionsPage = () => {
   return (
-    <div>
+    <div className="h-full">
       {/* Header bar */}
       <div className="flex justify-between items-center mb-6">
         <h1 className="capitalize text-2xl xl:text-3xl font-extrabold tracking-tight text-betterFinance-primary dark:text-betterFinance-background">
@@ -145,7 +145,7 @@ const TransactionsPage = () => {
       </div>
 
       {/* Transaction List */}
-      <div className="border rounded-3xl p-4 space-y-2 dark:border-betterFinance-primary h-full overflow-hidden">
+      <div className="border rounded-3xl p-4 space-y-2 dark:border-betterFinance-primary h-[calc(100%-60px)] overflow-hidden">
         <ScrollArea className="h-full" disableScrollbar>
           <Table>
             <TableHeader>
