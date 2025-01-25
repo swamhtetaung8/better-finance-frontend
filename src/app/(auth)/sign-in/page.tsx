@@ -123,7 +123,7 @@ const SignInPage = () => {
           )}
         />
 
-        <Button className="w-full">Sign In</Button>
+        <Button disabled={signInMutation.isPending} className="w-full">Sign In</Button>
 
         <div className="space-x-1 flex items-center">
           <span className="text-sm">Don&apos;t have an account?</span>

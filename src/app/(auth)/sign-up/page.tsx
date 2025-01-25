@@ -159,7 +159,7 @@ const SignUpPage = () => {
           )}
         />
 
-        <Button className="w-full">Sign Up</Button>
+        <Button className="w-full" disabled={signUpMutation.isPending}>Sign Up</Button>
 
         <div className="space-x-1 flex items-center">
           <span className="text-sm">Already have an account?</span>
