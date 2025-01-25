@@ -55,6 +55,8 @@ const LeftSideBar = () => {
       {/* <h1 className="text-2xl xl:text-3xl font-bold tracking-tight text-betterFinance-primary dark:text-betterFinance-background">
         Better Finance
       </h1> */}
+
+      {/* Logo */}
       <div className='relative h-[100px]'>
         <Image src="/images/logo.png" className="object-contain" fill alt="Logo of better finance brand" />
       </div>
@@ -63,15 +65,15 @@ const LeftSideBar = () => {
           <Link
             className={cn(
               "flex gap-4 p-3 rounded-3xl hover:bg-betterFinance-tertiary dark:hover:bg-betterFinance-background dark:hover:text-betterFinance-primary hover:text-white transition-colors duration-200", // Common classes
-              {
+                {
                 "bg-betterFinance-tertiary dark:bg-betterFinance-background dark:text-betterFinance-primary font-semibold text-white":
-                  pathName === link.uri, // Active link styles
-              }
-            )}
-            href={link.uri}
-            key={link.name}
-          >
-            {link.icon}
+                  link.uri == "/dashboard" ? (pathName === link.uri) : (pathName === link.uri || pathName.startsWith(link.uri))
+                }
+              )}
+              href={link.uri}
+              key={link.name}
+              >
+              {link.icon}
             <span>{link.name}</span>
           </Link>
         ))}
