@@ -31,7 +31,7 @@ export default function RootLayout({
         >
           <main className="flex bg-slate-200 dark:bg-gray-800 min-h-screen">
             <LeftSideBar />
-            <div className="rounded-l-[40px] p-8 bg-white dark:bg-gray-900 w-5/6">
+            <div className="rounded-l-[40px] p-7 bg-white dark:bg-gray-900 w-5/6">
               <TopNavBar />
               <section className="h-[calc(100vh-140px)]">{children}</section>
             </div>

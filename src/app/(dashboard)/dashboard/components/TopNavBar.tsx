@@ -3,12 +3,9 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 
-import { Bell, User, User2 } from "lucide-react";
+import { Bell, User2 } from "lucide-react";
 
 import ThemeSwitch from "@/components/betterFinance/ThemeSwitch";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,7 +26,7 @@ const TopNavBar = () => {
   };
 
   return (
-    <nav className="grid grid-cols-4 items-start gap-x-4 mb-8">
+    <nav className="grid grid-cols-4 items-start gap-x-4 mb-5">
       <h1 className="capitalize col-span-3 text-2xl font-semibold tracking-tight text-betterFinance-primary dark:text-betterFinance-background">
         <span>Good day, {userName}</span>
         <br />
