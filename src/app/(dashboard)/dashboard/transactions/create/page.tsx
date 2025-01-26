@@ -14,6 +14,7 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -202,26 +203,67 @@ const TransactionCreatePage = () => {
                       <SelectValue placeholder="Choose one of the following categories." />
                     </SelectTrigger>
                     <SelectContent>
+                      {!transactionType && (
+                        <SelectGroup>
+                          <SelectLabel className="text-red-500 font-normal">
+                            Please select a transaction type
+                          </SelectLabel>
+                        </SelectGroup>
+                      )}
                       {transactionType === "income" && (
                         <SelectGroup>
-                          <SelectItem value="salary">Salary</SelectItem>
-                          <SelectItem value="freelance">Freelance</SelectItem>
+                          <SelectItem value="salary">
+                            <div className="flex items-center">
+                              <span className="w-2 h-2 bg-emerald-500 mr-2 rounded-full"></span>{" "}
+                              Salary
+                            </div>
+                          </SelectItem>
+                          <SelectItem value="freelance">
+                            <div className="flex items-center">
+                              <span className="w-2 h-2 bg-indigo-500 mr-2 rounded-full"></span>{" "}
+                              Freelance
+                            </div>
+                          </SelectItem>
                           <SelectItem value="investment_returns">
-                            Investment Returns
+                            <div className="flex items-center">
+                              <span className="w-2 h-2 bg-sky-500 mr-2 rounded-full"></span>{" "}
+                              Investment Returns
+                            </div>{" "}
                           </SelectItem>
                         </SelectGroup>
                       )}
                       {transactionType === "expense" && (
                         <SelectGroup>
                           <SelectItem value="food_and_drinks">
-                            Food and Drinks
+                            <div className="flex items-center">
+                              <span className="w-2 h-2 bg-orange-500 mr-2 rounded-full"></span>{" "}
+                              Food And Drinks
+                            </div>
                           </SelectItem>
                           <SelectItem value="transportation">
-                            Transportation
+                            <div className="flex items-center">
+                              <span className="w-2 h-2 bg-zinc-500 mr-2 rounded-full"></span>{" "}
+                              Transportation
+                            </div>
                           </SelectItem>
-                          <SelectItem value="utility">Utility</SelectItem>
-                          <SelectItem value="shopping">Shopping</SelectItem>
-                          <SelectItem value="medical">Medical</SelectItem>
+                          <SelectItem value="utility">
+                            <div className="flex items-center">
+                              <span className="w-2 h-2 bg-yellow-500 mr-2 rounded-full"></span>{" "}
+                              Utility
+                            </div>
+                          </SelectItem>
+                          <SelectItem value="shopping">
+                            <div className="flex items-center">
+                              <span className="w-2 h-2 bg-rose-500 mr-2 rounded-full"></span>{" "}
+                              Shopping
+                            </div>
+                          </SelectItem>
+                          <SelectItem value="medical">
+                            <div className="flex items-center">
+                              <span className="w-2 h-2 bg-amber-500 mr-2 rounded-full"></span>{" "}
+                              Medical
+                            </div>
+                          </SelectItem>
                         </SelectGroup>
                       )}
                     </SelectContent>
