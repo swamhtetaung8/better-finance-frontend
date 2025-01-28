@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
+import { useSignOut } from "@/hooks/api/useSignOut";
+import { toast } from "@/hooks/use-toast";
 import Cookies from "js-cookie";
 
 import { Bell, User2 } from "lucide-react";
@@ -19,10 +21,22 @@ import Link from "next/link";
 const TopNavBar = () => {
   const router = useRouter();
   const userName = Cookies.get("user_name");
+  const signOutMutation = useSignOut();
 
   const signOut = () => {
-    Cookies.remove("api_token");
-    router.push("/sign-in");
+    signOutMutation.mutate(undefined, {
+      onSuccess: () => {
+        Cookies.remove("api_token");
+        router.push("/sign-in");
+      },
+      onError: () => {
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: "Something went wrong. Please try again.",
+        });
+      },
+    });
   };
 
   return (

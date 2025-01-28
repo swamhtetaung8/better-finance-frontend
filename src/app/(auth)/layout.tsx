@@ -3,7 +3,7 @@ import { Manrope } from "next/font/google";
 
 import "@/app/globals.css";
 import AuthCardLeftPanel from "@/app/(auth)/components/AuthCardLeftPanel";
-import Providers from "@/app/providers/Providers";
+import ReactQueryProvider from "@/app/providers/ReactQueryProvider";
 import { Toaster } from "@/components/ui/toaster";
 
 const manRopeSans = Manrope({
@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${manRopeSans.className} antialiased`}>
-        <Providers>
+        <ReactQueryProvider>
           <section className="flex items-center justify-center min-h-screen">
             <div className="flex flex-col md:flex-row h-screen md:min-h-0 md:h-auto w-[700px] lg:w-[800px] overflow-hidden md:rounded-xl md:border md:shadow">
               {/* Image Panel */}
@@ -35,7 +35,7 @@ export default function RootLayout({
             </div>
           </section>
           <Toaster />
-        </Providers>
+        </ReactQueryProvider>
       </body>
     </html>
   );
