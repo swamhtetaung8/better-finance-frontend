@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -35,33 +36,48 @@ import { useForm, useWatch } from "react-hook-form";
 import { z } from "zod";
 import { cn } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
+import { useCreateTransaction } from "@/hooks/api/transactions/useCreateTransaction";
 
-const TransactionCreateSchema = z.object({
-  name: z.string(),
+const CreateTransactionSchema = z.object({
+  description: z.string(),
   type: z.enum(["income", "expense"]),
   amount: z.string().min(0.1),
-  date: z.date(),
+  transaction_date: z.date(),
   category: z.string(),
 });
 
-type TransactionCreateFormFields = z.infer<typeof TransactionCreateSchema>;
+export type CreateTransactionFormFields = z.infer<
+  typeof CreateTransactionSchema
+>;
 
 const TransactionCreatePage = () => {
-  const form = useForm<TransactionCreateFormFields>({
-    resolver: zodResolver(TransactionCreateSchema),
+  const createTransactionMutation = useCreateTransaction();
+  const router = useRouter();
+
+  const form = useForm<CreateTransactionFormFields>({
+    resolver: zodResolver(CreateTransactionSchema),
   });
 
   const { control } = form;
   const transactionType = useWatch({ control, name: "type" });
 
-  function onSubmit(data: z.infer<typeof TransactionCreateSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
+  function onSubmit(data: z.infer<typeof CreateTransactionSchema>) {
+    createTransactionMutation.mutate(data, {
+      onSuccess: () => {
+        router.push("/dashboard/transactions");
+        toast({
+          variant: "success",
+          title: "Success",
+          description: "A new transaction is created.",
+        });
+      },
+      onError: () => {
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: "Opps, something went wrong. Please try again.",
+        });
+      },
     });
   }
 
@@ -85,7 +101,7 @@ const TransactionCreatePage = () => {
           <div className="grid grid-cols-2 gap-6">
             <FormField
               control={form.control}
-              name="name"
+              name="description"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Transaction Name</FormLabel>
@@ -145,7 +161,7 @@ const TransactionCreatePage = () => {
 
             <FormField
               control={form.control}
-              name="date"
+              name="transaction_date"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Transaction Date</FormLabel>
@@ -274,7 +290,10 @@ const TransactionCreatePage = () => {
             )}
           />
 
-          <Button className="w-full flex items-center gap-2 uppercase py-5">
+          <Button
+            disabled={createTransactionMutation.isPending}
+            className="w-full flex items-center gap-2 uppercase py-5"
+          >
             <PlusIcon />
             <span>Add Transaction</span>
           </Button>
