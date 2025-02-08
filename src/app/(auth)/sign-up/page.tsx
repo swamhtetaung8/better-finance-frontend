@@ -18,7 +18,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
-import { useSignUp } from "@/hooks/api/useSignUp";
+import { useSignUp } from "@/hooks/api/auth/useSignUp";
 import { useToast } from "@/hooks/use-toast";
 
 const SignUpSchema = z.object({

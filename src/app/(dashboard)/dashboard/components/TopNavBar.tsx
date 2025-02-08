@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-import { useSignOut } from "@/hooks/api/useSignOut";
+import { useSignOut } from "@/hooks/api/auth/useSignOut";
 import { toast } from "@/hooks/use-toast";
 import Cookies from "js-cookie";
 
