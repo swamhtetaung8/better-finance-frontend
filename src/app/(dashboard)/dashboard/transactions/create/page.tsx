@@ -211,7 +211,7 @@ const TransactionCreatePage = () => {
                 <FormControl>
                   <Select
                     onValueChange={field.onChange}
-                    defaultValue={field.value}
+                    value={field.value}
                   >
                     {" "}
                     {/* Correct binding */}

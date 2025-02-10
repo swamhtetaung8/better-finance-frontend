@@ -1,5 +1,7 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
-import { PlusIcon } from "lucide-react";
+import { LoaderCircle, PlusIcon, TriangleAlert } from "lucide-react";
 import React from "react";
 import {
   Table,
@@ -21,102 +23,18 @@ import {
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import TransactionTypeBadge from "../components/TransactionTypeBadge";
 import Link from "next/link";
-
-const transactions = [
-  {
-    transactionName: "Snack at Swensens",
-    date: "2025-01-20",
-    isPositive: false,
-    type: "food_and_drinks",
-    totalAmount: 8,
-  },
-  {
-    transactionName: "Uber to work",
-    date: "2025-01-18",
-    isPositive: false,
-    type: "transportation",
-    totalAmount: 12,
-  },
-  {
-    transactionName: "Medical Checkup",
-    date: "2024-01-02",
-    isPositive: false,
-    type: "medical",
-    totalAmount: 55,
-  },
-  {
-    transactionName: "Eat out",
-    date: "2024-01-10",
-    isPositive: false,
-    type: "food_and_drinks",
-    totalAmount: 25,
-  },
-  {
-    transactionName: "Dinner at McDonald's",
-    date: "2024-12-30",
-    isPositive: false,
-    type: "food_and_drinks",
-    totalAmount: 25,
-  },
-  {
-    transactionName: "Monthly Salary",
-    date: "2024-12-29",
-    isPositive: true,
-    type: "salary",
-    totalAmount: 2450,
-  },
-  {
-    transactionName: "Shopping",
-    date: "2024-12-28",
-    isPositive: false,
-    type: "shopping",
-    totalAmount: 245,
-  },
-  {
-    transactionName: "Eat out",
-    date: "2024-12-28",
-    isPositive: false,
-    type: "food_and_drinks",
-    totalAmount: 35,
-  },
-  {
-    transactionName: "Client John's Payment",
-    date: "2024-12-27",
-    isPositive: true,
-    type: "freelance",
-    totalAmount: 245,
-  },
-  {
-    transactionName: "Uber",
-    date: "2024-12-26",
-    isPositive: false,
-    type: "transportation",
-    totalAmount: 15,
-  },
-  {
-    transactionName: "S&P 500",
-    date: "2024-12-26",
-    isPositive: true,
-    type: "investment_returns",
-    totalAmount: 200,
-  },
-  {
-    transactionName: "Binance",
-    date: "2024-12-26",
-    isPositive: true,
-    type: "investment_returns",
-    totalAmount: 100,
-  },
-  {
-    transactionName: "New Watch",
-    date: "2024-12-25",
-    isPositive: false,
-    type: "shopping",
-    totalAmount: 100,
-  },
-];
+import { useGetTransactions } from "@/hooks/api/transactions/useGetTransactions";
+import { format } from "date-fns";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const TransactionsPage = () => {
+  const {
+    data: transactions = [],
+    isLoading,
+    isError,
+    isSuccess,
+  } = useGetTransactions();
+
   return (
     <div className="h-full">
       {/* Header bar */}
@@ -155,7 +73,7 @@ const TransactionsPage = () => {
               <TableRow className="sticky top-0 bg-white hover:bg-white dark:bg-gray-900 dark:hover:bg-gray-900">
                 <TableHead className="w-[550px]">Transaction Name</TableHead>
                 <TableHead>Date</TableHead>
-                <TableHead>Type</TableHead>
+                <TableHead>Category</TableHead>
                 <TableHead className="text-right">Amount</TableHead>
               </TableRow>
             </TableHeader>
@@ -165,33 +83,63 @@ const TransactionsPage = () => {
                   <ScrollBar className="pt-[calc(3rem+4px)]" />
                 </td>
               </tr>
-              {transactions?.map((transaction) => (
-                <TableRow key={transaction.transactionName}>
-                  <TableCell className="font-medium">
-                    {transaction.transactionName}
-                  </TableCell>
-                  <TableCell>{transaction.date}</TableCell>
-                  <TableCell>
-                    <TransactionTypeBadge
-                      isPositive={transaction.isPositive}
-                      type={transaction.type}
-                    />
-                  </TableCell>
-                  <TableCell className="text-right font-medium">
-                    {transaction.isPositive ? (
-                      <span className="text-betterFinance-primary dark:text-betterFinance-background">
-                        +{transaction.totalAmount}
+
+              {isLoading && (
+                <TableRow className="text-center hover:bg-white text-gray-500 h-[400px]">
+                  <TableCell colSpan={4}>
+                    <span className="space-x-2">
+                      <span>
+                        <LoaderCircle className="animate-spin inline-block" />
                       </span>
-                    ) : (
-                      <span className="text-red-500">
-                        -{transaction.totalAmount}
-                      </span>
-                    )}
+                      <span>Loading</span>
+                    </span>
                   </TableCell>
                 </TableRow>
-              ))}
+              )}
 
-              {transactions.length == 0 && (
+              {isError && (
+                <TableRow className="text-center hover:bg-white text-gray-500 h-[400px]">
+                  <TableCell colSpan={4}>
+                    <span className="space-x-2 text-red-500">
+                      <span>
+                        <TriangleAlert className="inline-block" />
+                      </span>
+                      <span>An unexpected error occured. The data cannot be fetched.</span>
+                    </span>
+                  </TableCell>
+                </TableRow>
+              )}
+
+              {isSuccess &&
+                transactions.data.map((transaction) => (
+                  <TableRow key={transaction.description}>
+                    <TableCell className="font-medium">
+                      {transaction.description}
+                    </TableCell>
+                    <TableCell>
+                      {format(new Date(transaction.transaction_date), "PPp")}
+                    </TableCell>
+                    <TableCell>
+                      <TransactionTypeBadge
+                        isPositive={transaction.type === "income"}
+                        type={transaction.category}
+                      />
+                    </TableCell>
+                    <TableCell className="text-right font-medium">
+                      {transaction.type === "income" ? (
+                        <span className="text-betterFinance-primary dark:text-betterFinance-background">
+                          +{transaction.amount}
+                        </span>
+                      ) : (
+                        <span className="text-red-500">
+                          -{transaction.amount}
+                        </span>
+                      )}
+                    </TableCell>
+                  </TableRow>
+                ))}
+
+              {isSuccess && transactions.data.length == 0 && (
                 <TableRow className="text-center hover:bg-white text-gray-500 h-[400px]">
                   <TableCell colSpan={4}>No data is available yet.</TableCell>
                 </TableRow>
