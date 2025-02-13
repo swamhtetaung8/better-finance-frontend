@@ -62,7 +62,12 @@ const TransactionCreatePage = () => {
   const transactionType = useWatch({ control, name: "type" });
 
   function onSubmit(data: z.infer<typeof CreateTransactionSchema>) {
-    createTransactionMutation.mutate(data, {
+    const formattedData = {
+      ...data,
+      transaction_date: format(data.transaction_date, "yyyy-MM-dd'T'HH:mm:ss"), // Keeps selected time instead of converting to UTC
+    };
+
+    createTransactionMutation.mutate(formattedData, {
       onSuccess: () => {
         router.push("/dashboard/transactions");
         toast({
