@@ -25,7 +25,6 @@ import TransactionTypeBadge from "../components/TransactionTypeBadge";
 import Link from "next/link";
 import { useGetTransactions } from "@/hooks/api/transactions/useGetTransactions";
 import { format } from "date-fns";
-import { Skeleton } from "@/components/ui/skeleton";
 
 const TransactionsPage = () => {
   const {
@@ -117,7 +116,7 @@ const TransactionsPage = () => {
                       {transaction.description}
                     </TableCell>
                     <TableCell>
-                      {format(new Date(transaction.transaction_date), "PPp")}
+                      {format(new Date(transaction.transaction_date), "PP")}
                     </TableCell>
                     <TableCell>
                       <TransactionTypeBadge
